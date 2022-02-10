@@ -1,0 +1,27 @@
+.filters{
+    &__wrapper{
+        display: flex;
+        justify-content: start;
+        column-gap: 50px;
+        padding: 30px 50px;
+    }
+    &__title{
+        text-align: center;
+    }
+    &__subgroup{
+        &-wrapper{
+            display: flex;
+            justify-content: space-between;
+            //flex-direction: column;
+        }
+        &-item{
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+    &__master{
+        &-input{
+            margin-top: 10px;
+        }
+    }
+}
