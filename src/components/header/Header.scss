@@ -1,0 +1,16 @@
+@import '../../variables.scss'; 
+
+.header{
+    padding: 30px 20px;
+    background-color: $main-bg;
+    &__change-faculty{
+        padding: 15px 20px;
+        background-color: $button-change;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        &:hover{
+            background-color: $button-change-hover;
+        }
+    }    
+} 
