@@ -2,6 +2,13 @@
 
 .schedule{
     margin-bottom: 50px;
+    a{
+        color: grey;
+        display: block;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
     &__table{
         &_title{
             display: grid;
@@ -11,6 +18,9 @@
             background-color: $grey-bg;
             align-items: center;
             &>div{
+                padding: 10px 10px;
+            }
+            &>a{
                 padding: 10px 10px;
             }
             @media (max-width: 750px){

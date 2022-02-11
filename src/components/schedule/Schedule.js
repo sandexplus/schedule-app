@@ -6,13 +6,22 @@ import CheckWeek from "../checkWeek/CheckWeek";
 
 class Schedule extends Component {
     state = {
-        schedule: []
+        schedule: [],
+        links: []
     }
 
     componentDidMount = () => {
         this.setState({
             schedule: this.props.schedule
         })
+    }
+
+    getLinks = () => {
+        fetch('https://schedule-omsu.herokuapp.com/links')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({links: data})
+            })
     }
 
     render () {
@@ -23,7 +32,8 @@ class Schedule extends Component {
                         <View schedule={this.props.schedule} 
                         subgroup={this.props.subgroup}
                         filteredSubject={this.props.filteredSubject}
-                        showAllTable={this.props.showAllTable}/>
+                        showAllTable={this.props.showAllTable}
+                        links={this.state.links}/>
                     </div>
                 </div>
             </section>            
@@ -127,6 +137,18 @@ const View = (props) => {
             if (i % 2 === 0){
                 bg = '#f8f8ff';
             }
+            const link = props.links.map(link => {
+                if (link.name === master){
+                    return link.link
+                }
+                return '';
+            });
+            let divLink;
+            if (link[0] === undefined){
+                divLink = <div className="schedule__table_class">{subject}</div>
+            } else {
+                divLink = <a href={link} className="schedule__table_class" target="_blank" rel="noreferrer">{subject}</a>
+            }
 
             return (                   
                 <div className="schedule__table_subject" style={{borderLeft: `2px solid ${borLeft}`, backgroundColor: bg}}key={i + 1000}>
@@ -134,7 +156,7 @@ const View = (props) => {
                     <div className="schedule__table_subgroup">{subgroup}</div>
                     <div className="schedule__table_type">{type}</div>
                     <div className="schedule__table_time">{`${time.timeStartHours}.${time.timeStartMinutes}-${time.timeEndHours}.${time.timeEndMinutes}`}</div>
-                    <div className="schedule__table_class">{subject}</div>
+                    {divLink}
                     <div className="schedule__table_master">{master}</div>
                     <div className="schedule__table_cabinet">{cabinet}</div>
                 </div>
