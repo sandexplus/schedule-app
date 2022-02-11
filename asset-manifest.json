@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/schedule-app/static/css/main.f27ea4e0.css",
+    "main.js": "/schedule-app/static/js/main.eb787789.js",
+    "index.html": "/schedule-app/index.html",
+    "main.f27ea4e0.css.map": "/schedule-app/static/css/main.f27ea4e0.css.map",
+    "main.eb787789.js.map": "/schedule-app/static/js/main.eb787789.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f27ea4e0.css",
+    "static/js/main.eb787789.js"
+  ]
+}
