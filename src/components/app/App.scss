@@ -1,4 +1,7 @@
 .container {
     max-width: 876px;
     margin: 0 auto;
+    @media (max-width: 876px){
+        max-width: 750px;
+    }
 }

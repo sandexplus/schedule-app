@@ -5,7 +5,7 @@
     &__table{
         &_title{
             display: grid;
-            grid-template-columns: 1fr 2fr 3fr 1.5fr 4fr 7.5fr 4fr 3fr;
+            grid-template-columns: 3% 6% 11% 8% 15% 27% 20% 10%;
             grid-auto-rows: minmax(50px, 1fr);
             text-align: center;
             background-color: $grey-bg;
@@ -13,15 +13,42 @@
             &>div{
                 padding: 10px 10px;
             }
+            @media (max-width: 750px){
+                grid-template-columns: 6% 11% 10% 12% 24% 24% 13%;
+                .schedule__table_number{
+                    display: none;
+                }
+            }
+            @media (max-width: 556px){
+                font-size: 11px;
+            }
+            @media (max-width: 402px){
+                font-size: 10px;
+            }
         }
         &_subject{
             align-items: center;
             display: grid;
-            grid-template-columns: 1fr 2fr 3fr 1.5fr 4fr 7.5fr 4fr 3fr;
+            grid-template-columns: 3% 6% 11% 8% 15% 27% 20% 10%;
             grid-auto-rows: minmax(50px, 1fr);
             text-align: center;
             &>div{
                 padding: 10px 10px;
+            }
+            @media (max-width: 750px){
+                grid-template-columns: 6% 11% 10% 12% 24% 24% 13%;
+                .schedule__table_number{
+                    display: none;
+                }
+            }
+            @media (max-width: 556px){
+                font-size: 13px;
+            }
+            @media (max-width: 480px){
+                font-size: 11px;
+            }
+            @media (max-width: 402px){
+                font-size: 10px;
             }
         }
         &_day{
@@ -31,37 +58,3 @@
         }
     }
 }
-
-/* @media (max-width: 576px) {
-    .schedule{
-        margin-bottom: 50px;
-        &__table{
-            &_title{
-                display: grid;
-                grid-template-columns: 1fr 2fr 3fr 1.5fr 4fr 7.5fr 4fr 3fr;
-                grid-auto-rows: minmax(50px, 1fr);
-                text-align: center;
-                background-color: $grey-bg;
-                align-items: center;
-                &>div{
-                    padding: 10px 10px;
-                }
-            }
-            &_subject{
-                align-items: center;
-                display: grid;
-                grid-template-columns: 1fr 2fr 3fr 1.5fr 4fr 7.5fr 4fr 3fr;
-                grid-auto-rows: minmax(50px, 1fr);
-                text-align: center;
-                &>div{
-                    padding: 10px 10px;
-                }
-            }
-            &_day{
-                padding: 20px 0;
-                padding-left: 30px;
-                background-color: $main-bg;
-            }
-        }
-    }
-} */
