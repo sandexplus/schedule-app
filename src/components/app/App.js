@@ -46,12 +46,51 @@ class App extends Component{
         }
     ]
 
+    state = {
+        subgroup: null,
+        schedule: [],
+        filteredSubject: 'null',
+        showAllTable: false
+    }
+
+    componentDidMount = () => {
+        fetch('https://schedule-omsu.herokuapp.com/data')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({schedule: data})
+            })
+    }
+
+    onChangeSubgroup = (subgroup) => {
+        this.setState({
+            subgroup: subgroup
+        });
+    }
+
+    onChangeFilteredSubject = (filteredSubject) => {
+        this.setState({
+            filteredSubject: filteredSubject
+        })
+    }
+
+    onChangeCheckbox = () => {
+        this.setState({
+            showAllTable: !this.state.showAllTable
+        })
+    }
+
     render (){
         return (
             <>
                 <Header group="СПБ-901-01" faculty="Факультет компьютерных наук"/>
-                <Filters/>
-                <Schedule/>
+                <Filters onChangeSubgroup={this.onChangeSubgroup} 
+                    onChangeFilteredSubject={this.onChangeFilteredSubject} 
+                    schedule={this.state.schedule}
+                    onChangeCheckbox={this.onChangeCheckbox}/>
+                <Schedule subgroup={this.state.subgroup} 
+                    schedule={this.state.schedule}
+                    filteredSubject={this.state.filteredSubject}
+                    showAllTable={this.state.showAllTable}/>
             </>
         );
     }

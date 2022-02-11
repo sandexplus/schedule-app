@@ -10,11 +10,9 @@ class Schedule extends Component {
     }
 
     componentDidMount = () => {
-        fetch('https://schedule-omsu.herokuapp.com/data')
-            .then(res => res.json())
-            .then(data => {
-                this.setState({schedule: data})
-            })
+        this.setState({
+            schedule: this.props.schedule
+        })
     }
 
     render () {
@@ -22,7 +20,10 @@ class Schedule extends Component {
             <section className="schedule">
                 <div className="container">
                     <div className="schedule__table">
-                        <View schedule={this.state.schedule}/>
+                        <View schedule={this.props.schedule} 
+                        subgroup={this.props.subgroup}
+                        filteredSubject={this.props.filteredSubject}
+                        showAllTable={this.props.showAllTable}/>
                     </div>
                 </div>
             </section>            
@@ -33,11 +34,11 @@ class Schedule extends Component {
 const View = (props) => {
     const table = props.schedule.map((day, i) => {
         const header = (
-            <>
+            <div key={i}>
                 <div className="schedule__table_day">
                     {day.dayOfWeek}
                 </div>
-                <div className="schedule__table_title">
+                <div className="schedule__table_title" key={i + 100}>
                     <div className="schedule__table_number">№</div>
                     <div className="schedule__table_subgroup">п/г</div>
                     <div className="schedule__table_weeks">Недели</div>
@@ -47,7 +48,7 @@ const View = (props) => {
                     <div className="schedule__table_master">Преподаватель</div>
                     <div className="schedule__table_cabinet">Кабинет</div>
                 </div>
-            </>
+            </div>
         )
         return props.schedule[i].data.map((item, i) => {
             let {subgroup, weeksStart, weeksEnd, type, time, subject, master, cabinet} = item;
@@ -55,29 +56,46 @@ const View = (props) => {
             if (i === 0){
                 return header;
             }
-
-            let currentWeek = CheckWeek();
-            if (currentWeek > weeksEnd || currentWeek < weeksStart){
+            if (props.filteredSubject !== subject && props.filteredSubject !== 'null' && subgroup === 'choosen'){
                 return (
                     <>
                     </>
                 )
             }
+            let currentWeek = CheckWeek();
 
+            if (props.showAllTable){
+                if (currentWeek > weeksEnd || currentWeek < weeksStart){
+                    return (
+                        <>
+                        </>
+                    )
+                }
+            }
+            if (subgroup && subgroup !== 1 && subgroup !== 2 && subgroup !== 'choosen'){
+                if (currentWeek % 2 === 0){
+                    subgroup = subgroup.even;
+                } else {
+                    subgroup = subgroup.odd;
+                }
+            }
+            if (props.subgroup !== subgroup && subgroup !== 'choosen' && subgroup !== 'object' && props.subgroup !== null && subgroup !== null){
+                return (
+                    <>
+                    </>
+                )
+            }
             if (!subgroup){
                 subgroup = '1/2';
             }
             if (subgroup === 'choosen'){
-                subgroup = 'д/в';
-            }
-            if (typeof(subgroup) == 'object'){
-                subgroup = 'нч/ч'
+                subgroup = 'в/д';
             }
 
             let borLeft;
             switch (type){
                 case 'Лаб':
-                    borLeft = '#ff7a66';
+                    borLeft = '#9999ff';
                     break;
                 case 'Лек':
                     borLeft = '#99ff99';
@@ -102,7 +120,7 @@ const View = (props) => {
             }
 
             return (                   
-                <div className="schedule__table_subject" style={{borderLeft: `2px solid ${borLeft}`, backgroundColor: bg}}>
+                <div className="schedule__table_subject" style={{borderLeft: `2px solid ${borLeft}`, backgroundColor: bg}}key={i + 1000}>
                     <div className="schedule__table_number">{i}</div>
                     <div className="schedule__table_subgroup">{subgroup}</div>
                     <div className="schedule__table_weeks">{`${weeksStart}-${weeksEnd} нед.`}</div>
