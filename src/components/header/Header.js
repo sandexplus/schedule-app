@@ -10,9 +10,9 @@ const Header = (props) => {
                 <h2 className="header__subtitle">
                     {props.faculty}
                 </h2>
-                <button className="header__change-faculty">
+                {/* <button className="header__change-faculty">
                     Изменить факультет или группу
-                </button>
+                </button> */}
             </div>
         </header>
     );

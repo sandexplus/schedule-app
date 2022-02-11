@@ -33,15 +33,24 @@ class Schedule extends Component {
 
 const View = (props) => {
     const table = props.schedule.map((day, i) => {
+        const days = [
+            'Воскресенье',
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота'
+        ];
+        let today = new Date().getDay();
         const header = (
             <div key={i}>
-                <div className="schedule__table_day">
+                <div className="schedule__table_day" style={days[today] === day.dayOfWeek ? {backgroundColor: '#0079db'} : {backgroundColor: '#75c1ff'}}>
                     {day.dayOfWeek}
                 </div>
                 <div className="schedule__table_title" key={i + 100}>
                     <div className="schedule__table_number">№</div>
                     <div className="schedule__table_subgroup">п/г</div>
-                    <div className="schedule__table_weeks">Недели</div>
                     <div className="schedule__table_type">Тип</div>
                     <div className="schedule__table_time">Время</div>
                     <div className="schedule__table_class">Предмет</div>
@@ -123,7 +132,6 @@ const View = (props) => {
                 <div className="schedule__table_subject" style={{borderLeft: `2px solid ${borLeft}`, backgroundColor: bg}}key={i + 1000}>
                     <div className="schedule__table_number">{i}</div>
                     <div className="schedule__table_subgroup">{subgroup}</div>
-                    <div className="schedule__table_weeks">{`${weeksStart}-${weeksEnd} нед.`}</div>
                     <div className="schedule__table_type">{type}</div>
                     <div className="schedule__table_time">{`${time.timeStartHours}.${time.timeStartMinutes}-${time.timeEndHours}.${time.timeEndMinutes}`}</div>
                     <div className="schedule__table_class">{subject}</div>

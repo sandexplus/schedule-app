@@ -6,7 +6,7 @@ class Filters extends Component {
         subgroup: null,
         schedule: [],
         filteredSubject: '',
-        showAllTable: false
+        showAllTable: true
     }
 
     onChangeSubgroup = (subgroup) => {

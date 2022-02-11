@@ -50,7 +50,7 @@ class App extends Component{
         subgroup: null,
         schedule: [],
         filteredSubject: 'null',
-        showAllTable: false
+        showAllTable: true
     }
 
     componentDidMount = () => {
