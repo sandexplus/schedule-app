@@ -1,0 +1,494 @@
+{   
+    "data" : [
+        {
+        "dayOfWeek": "Понедельник",
+        "data": [
+            {
+    
+            },
+            {
+                "subgroup": 1,
+                "weeksStart": 10,
+                "weeksEnd": 16,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 8,
+                    "timeStartMinutes": 0,
+                    "timeEndHours": 9,
+                    "timeEndMinutes": 35
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 1,
+                "weeksStart": 10,
+                "weeksEnd": 16,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 2,
+                "weeksStart": 10,
+                "weeksEnd": 16,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Программирование сетевых приложений",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 2,
+                "weeksStart": 10,
+                "weeksEnd": 16,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 15,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 17,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Квантовые коммуникации",
+                "master": "Лавров Д.Н.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 17,
+                    "timeStartMinutes": 15,
+                    "timeEndHours": 18,
+                    "timeEndMinutes": 50
+                },
+                "subject": "Операционные системы",
+                "master": "Соловьева Л.А.",
+                "cabinet": "дист."
+            }
+        ]
+        },
+        {
+        "dayOfWeek": "Вторник",
+        "data": [
+            {
+    
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Цифровая обработка сигналов",
+                "master": "Вахний Т.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 10,
+                "weeksEnd": 13,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Цифровая обработка сигналов",
+                "master": "Вахний Т.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Корпоративные информационные системы",
+                "master": "Костюшина Е.А.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 10,
+                "weeksEnd": 13,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Корпоративные информационные системы",
+                "master": "Костюшина Е.А.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 2,
+                "weeksEnd": 13,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Цифровая обработка сигналов",
+                "master": "Вахний Т.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": "choosen",
+                "weeksStart": 2,
+                "weeksEnd": 13,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Корпоративные информационные системы",
+                "master": "Костюшина Е.А.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Базы данных",
+                "master": "Опарина Т.М.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 2,
+                "weeksEnd": 9,
+                "type": "Лек",
+                "time": {
+                    "timeStartHours": 15,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 17,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Проектирование информационных систем",
+                "master": "Лейхтер С.В.",
+                "cabinet": "дист."
+            }
+        ]
+        },
+        {
+        "dayOfWeek": "Среда",
+        "data": [
+            {
+    
+            }
+        ]
+        },
+        {
+        "dayOfWeek": "Четверг",
+        "data": [
+            {
+                
+            },
+            {
+                "subgroup": {
+                    "even": 2,
+                    "odd": 1
+                },
+                "weeksStart": 1,
+                "weeksEnd": 15,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 15,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 17,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Базы данных",
+                "master": "Опарина Т.М.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": {
+                    "even": 2,
+                    "odd": 1
+                },
+                "weeksStart": 1,
+                "weeksEnd": 15,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 17,
+                    "timeStartMinutes": 15,
+                    "timeEndHours": 18,
+                    "timeEndMinutes": 50
+                },
+                "subject": "Базы данных",
+                "master": "Опарина Т.М.",
+                "cabinet": "дист."
+            }
+        ]
+        },
+        {
+        "dayOfWeek": "Пятница",
+        "data": [
+            {
+                
+            },
+            {
+                "subgroup": 2,
+                "weeksStart": 14,
+                "weeksEnd": 15,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 8,
+                    "timeStartMinutes": 0,
+                    "timeEndHours": 9,
+                    "timeEndMinutes": 35
+                },
+                "subject": "Базы данных",
+                "master": "Опарина Т.М.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Проектирование информационных систем",
+                "master": "Лейхтер С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Проектирование информационных систем",
+                "master": "Лейхтер С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Операционные системы",
+                "master": "Соловьева Л.А.",
+                "cabinet": "дист."
+            }
+
+        ]
+        },
+        {
+        "dayOfWeek": "Суббота",
+        "data": [
+            {
+    
+            },
+            {
+                "subgroup": 2,
+                "weeksStart": 9,
+                "weeksEnd": 9,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 8,
+                    "timeStartMinutes": 0,
+                    "timeEndHours": 9,
+                    "timeEndMinutes": 35
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Квантовые коммуникации",
+                "master": "Богаченко Н.Ф.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 2,
+                "weeksStart": 9,
+                "weeksEnd": 9,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 9,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 11,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Программирование сетевых приложений",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 1,
+                "weeksStart": 9,
+                "weeksEnd": 9,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 11,
+                    "timeStartMinutes": 30,
+                    "timeEndHours": 13,
+                    "timeEndMinutes": 5
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": null,
+                "weeksStart": 1,
+                "weeksEnd": 8,
+                "type": "Пр",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Программирование сетевых приложений",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            },
+            {
+                "subgroup": 1,
+                "weeksStart": 9,
+                "weeksEnd": 9,
+                "type": "Лаб",
+                "time": {
+                    "timeStartHours": 13,
+                    "timeStartMinutes": 45,
+                    "timeEndHours": 15,
+                    "timeEndMinutes": 20
+                },
+                "subject": "Вычислительные системы",
+                "master": "Гусс С.В.",
+                "cabinet": "дист."
+            }
+        ]
+        }
+    ]
+}
