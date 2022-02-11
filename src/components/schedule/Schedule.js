@@ -10,7 +10,7 @@ class Schedule extends Component {
     }
 
     componentDidMount = () => {
-        fetch('http://localhost:3000/data')
+        fetch('https://employeestest123.herokuapp.com/data')
             .then(res => res.json())
             .then(data => {
                 this.setState({schedule: data})
