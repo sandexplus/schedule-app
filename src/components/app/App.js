@@ -53,7 +53,18 @@ class App extends Component{
         showAllTable: true
     }
 
+    componentDidUpdate = () => {
+        localStorage.setItem('subgroup', this.state.subgroup);
+        localStorage.setItem('filteredSubject', this.state.filteredSubject);
+    }
+
     componentDidMount = () => {
+        if (localStorage.getItem('subgroup')){
+            this.onChangeSubgroup(+localStorage.getItem('subgroup'))
+        }
+        if (localStorage.getItem('filteredSubject')){
+            this.onChangeFilteredSubject(localStorage.getItem('filteredSubject'))
+        }
         fetch('https://schedule-omsu.herokuapp.com/data')
             .then(res => res.json())
             .then(data => {
