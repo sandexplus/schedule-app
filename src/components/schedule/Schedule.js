@@ -1,6 +1,8 @@
 import { Component } from "react";
 import './Schedule.scss'
 
+import CheckWeek from "../checkWeek/CheckWeek";
+
 
 class Schedule extends Component {
     state = {
@@ -11,7 +13,6 @@ class Schedule extends Component {
         fetch('http://localhost:3000/data')
             .then(res => res.json())
             .then(data => {
-                
                 this.setState({schedule: data})
             })
     }
@@ -53,6 +54,14 @@ const View = (props) => {
 
             if (i === 0){
                 return header;
+            }
+
+            let currentWeek = CheckWeek();
+            if (currentWeek > weeksEnd || currentWeek < weeksStart){
+                return (
+                    <>
+                    </>
+                )
             }
 
             if (!subgroup){
