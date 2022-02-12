@@ -5,6 +5,7 @@ import './App.scss';
 import Header from '../header/Header';
 import Filters from '../filters/Filters';
 import Schedule from '../schedule/Schedule';
+import Spinner from '../spinner/Spinner';
 
 class App extends Component{
     timeOfCourses = [
@@ -50,7 +51,8 @@ class App extends Component{
         subgroup: null,
         schedule: [],
         filteredSubject: 'null',
-        showAllTable: true
+        showAllTable: true,
+        loading: true
     }
 
     componentDidUpdate = () => {
@@ -68,7 +70,7 @@ class App extends Component{
         fetch('https://schedule-omsu.herokuapp.com/data')
             .then(res => res.json())
             .then(data => {
-                this.setState({schedule: data})
+                this.setState({schedule: data, loading: false})
             })
     }
 
@@ -101,7 +103,8 @@ class App extends Component{
                 <Schedule subgroup={this.state.subgroup} 
                     schedule={this.state.schedule}
                     filteredSubject={this.state.filteredSubject}
-                    showAllTable={this.state.showAllTable}/>
+                    showAllTable={this.state.showAllTable}
+                    spinner={this.state.loading === true ? <Spinner/> : null}/>
             </>
         );
     }

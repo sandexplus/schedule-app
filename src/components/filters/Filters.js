@@ -44,10 +44,21 @@ class Filters extends Component {
         this.setState({
             schedule: this.props.schedule
         })
+        if (localStorage.getItem('subgroup')){
+            this.setState({
+                subgroup: +localStorage.getItem('subgroup')
+            })
+        }
+        if (localStorage.getItem('filteredSubject')){
+            this.setState({
+                filteredSubject: localStorage.getItem('filteredSubject')
+            })
+        }
     }
 
     
     render () {
+
         const btnClass = 'filters__subgroup-item';
         const btnClassActive = 'filters__subgroup-item btn_active';
         return (

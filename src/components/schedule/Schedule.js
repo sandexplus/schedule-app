@@ -1,5 +1,6 @@
 import { Component } from "react";
 import './Schedule.scss'
+import Spinner from "../spinner/Spinner";
 
 import CheckWeek from "../checkWeek/CheckWeek";
 
@@ -7,12 +8,14 @@ import CheckWeek from "../checkWeek/CheckWeek";
 class Schedule extends Component {
     state = {
         schedule: [],
-        links: []
+        links: [],
+        loading: true
     }
 
     componentDidMount = () => {
         this.setState({
-            schedule: this.props.schedule
+            schedule: this.props.schedule,
+            loading: true
         })
     }
 
@@ -24,16 +27,19 @@ class Schedule extends Component {
             })
     }
 
-    render () {
+    render () { 
+        //const loadingDiv = this.state.loading ? <Spinner/> : null;
         return (
             <section className="schedule">
                 <div className="container">
                     <div className="schedule__table">
+                        {this.props.spinner}
                         <View schedule={this.props.schedule} 
                         subgroup={this.props.subgroup}
                         filteredSubject={this.props.filteredSubject}
                         showAllTable={this.props.showAllTable}
-                        links={this.state.links}/>
+                        links={this.state.links}
+                        loading={this.state.loading}/>
                     </div>
                 </div>
             </section>            
@@ -82,7 +88,7 @@ const View = (props) => {
                 )
             }
             let currentWeek = CheckWeek();
-
+            console.log(currentWeek);
             if (props.showAllTable){
                 if (currentWeek > weeksEnd || currentWeek < weeksStart){
                     return (
