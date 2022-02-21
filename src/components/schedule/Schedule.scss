@@ -35,6 +35,12 @@
             @media (max-width: 402px){
                 font-size: 10px;
             }
+            @media (max-width: 375px){
+                grid-template-columns: 13% 14% 30% 26% 17%;
+                .schedule__table_subgroup{
+                    display: none;
+                }
+            }
         }
         &_subject{
             align-items: center;
@@ -59,6 +65,12 @@
             }
             @media (max-width: 402px){
                 font-size: 10px;
+            }
+            @media (max-width: 375px){
+                grid-template-columns: 13% 14% 30% 26% 17%;
+                .schedule__table_subgroup{
+                    display: none;
+                }
             }
         }
         &_day{
