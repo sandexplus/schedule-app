@@ -1,6 +1,5 @@
 import { Component } from "react";
 import './Schedule.scss'
-import Spinner from "../spinner/Spinner";
 
 import CheckWeek from "../checkWeek/CheckWeek";
 
@@ -88,7 +87,6 @@ const View = (props) => {
                 )
             }
             let currentWeek = CheckWeek();
-            console.log(currentWeek);
             if (props.showAllTable){
                 if (currentWeek > weeksEnd || currentWeek < weeksStart){
                     return (

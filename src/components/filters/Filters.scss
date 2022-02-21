@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .filters{
     &__wrapper{
         display: flex;
@@ -27,11 +29,33 @@
         }
         &-item{
             margin-top: 10px;
+            background-color: $main-bg;
+            border: none;
+            min-width: 30px;
+            min-height: 30px;
             cursor: pointer;
         }
     }
     &__choosen{
         margin-bottom: 15px;
+        &-wrapper{
+            margin-top: 10px;
+            background-color: $grey-bg;
+            min-height: 30px;
+            border-radius: 5px;
+            padding-left: 10px;
+            font-size: 15px;
+        }
+        &-item{
+            min-height: 30px;
+            font-size: 15px;
+        }
+    }
+    &__checkbox{
+        min-width: 30px;
+        min-height: 30px;
+        margin-left: 0;
+        margin-top: 10px;
     }
     .btn_active{
         border: 2px solid #000;
