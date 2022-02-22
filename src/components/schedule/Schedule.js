@@ -16,14 +16,11 @@ class Schedule extends Component {
             schedule: this.props.schedule,
             loading: true
         })
-    }
-
-    getLinks = () => {
         fetch('https://schedule-omsu.herokuapp.com/links')
             .then(res => res.json())
             .then(data => {
                 this.setState({links: data})
-            })
+        })
     }
 
     render () { 
@@ -141,19 +138,16 @@ const View = (props) => {
             if (i % 2 === 0){
                 bg = '#f8f8ff';
             }
-            const link = props.links.map(link => {
-                if (link.name === master){
-                    return link.link
-                }
-                return '';
-            });
-            let divLink;
-            if (link[0] === undefined){
-                divLink = <div className="schedule__table_class">{subject}</div>
-            } else {
-                divLink = <a href={link} className="schedule__table_class" target="_blank" rel="noreferrer">{subject}</a>
-            }
 
+            let divLink
+            divLink = <div className="schedule__table_class">{subject}</div>  
+            for (let i = 0; i < props.links.length; i++){
+                if (props.links[i].name === master && props.links[i].link !== ''){
+                    divLink = <a href={props.links[i].link} className="schedule__table_class" target="_blank" rel="noreferrer">{subject}</a>
+                    break;
+                }             
+            }
+            
             return (                   
                 <div className="schedule__table_subject" style={{borderLeft: `2px solid ${borLeft}`, backgroundColor: bg}}key={i + 1000}>
                     <div className="schedule__table_number">{i}</div>
