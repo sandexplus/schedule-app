@@ -25,7 +25,7 @@ const App = () => {
     }, [])
 
     const loadData = () => {
-        fetch(`http://localhost:3000/data`)
+        fetch(`https://schedule-omsu.herokuapp.com/data`)
         .then(res => {
             return res.json()
         })
@@ -35,7 +35,7 @@ const App = () => {
     }
 
     const loadLinks = () => {
-        fetch(`http://localhost:3000/links`)
+        fetch(`https://schedule-omsu.herokuapp.com/links`)
         .then(res => {
             return res.json()
         })
