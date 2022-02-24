@@ -1,106 +1,87 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import './Filters.scss';
 
-class Filters extends Component {
-    state = {
-        subgroup: null,
-        schedule: [],
-        filteredSubject: '',
-        showAllTable: true
-    }
+const Filters = (props) => {
 
-    onChangeSubgroup = (subgroup) => {
-        if (this.state.subgroup === subgroup){
-            this.setState({
-                subgroup: null
-            });
-            this.props.onChangeSubgroup(null);
+    const [subgroup, setSubgroup] = useState(null);
+    const [filteredSubject, setFilteredSubject] = useState('');
+    const [showAllTable, setShowAllTable] = useState(true);
+
+    const onChangeSubgroup = (subg) => {
+        if (subgroup === subg){
+            setSubgroup(null)
+            props.onChangeSubgroup(null);
             return
         }
-        this.setState({
-            subgroup: subgroup
-        });
-        this.props.onChangeSubgroup(subgroup);
+        setSubgroup(subg)
+        props.onChangeSubgroup(subg);
     }
 
-    onChangeFilteredSubject = (e) => {
+    const onChangeFilteredSubject = (e) => {
         const {value} = e.target;
-        this.setState({
-            filteredSubject: value
-        });
+        setFilteredSubject(value)
         
-        this.props.onChangeFilteredSubject(value);
+        props.onChangeFilteredSubject(value);
     }
 
-    onChangeCheckbox = () => {
-        this.setState({
-            showAllTable: !this.state.showAllTable
-        })        
+    const onChangeCheckbox = () => {
+        setShowAllTable(!showAllTable)     
 
-        this.props.onChangeCheckbox()
+        props.onChangeCheckbox()
     }
 
-    componentDidMount = () => {
-        this.setState({
-            schedule: this.props.schedule
-        })
+    useEffect(() => {
         if (localStorage.getItem('subgroup')){
-            this.setState({
-                subgroup: +localStorage.getItem('subgroup')
-            })
+            setSubgroup(+localStorage.getItem('subgroup'))
         }
         if (localStorage.getItem('filteredSubject')){
-            this.setState({
-                filteredSubject: localStorage.getItem('filteredSubject')
-            })
+            setFilteredSubject(localStorage.getItem('filteredSubject'))
         }
-    }
-
+    }, [subgroup, filteredSubject])
     
-    render () {
 
-        const btnClass = 'filters__subgroup-item';
-        const btnClassActive = 'filters__subgroup-item btn_active';
-        return (
-            <section className="filters">
-                <div className="container">
-                    <div className="filters__wrapper">
-                        <div className="filters__subgroup">
-                            <div className="filters__title">
-                                Подгруппа
-                            </div>
-                            <div className="filters__subgroup-wrapper">
-                                <button className={this.state.subgroup === 1 ? btnClassActive : btnClass} onClick={() => this.onChangeSubgroup(1)}>1</button>
-                                <button className={this.state.subgroup === 2 ? btnClassActive : btnClass} onClick={() => this.onChangeSubgroup(2)}>2</button>
-                            </div>
+    const btnClass = 'filters__subgroup-item';
+    const btnClassActive = 'filters__subgroup-item btn_active';
+
+    return (
+        <section className="filters">
+            <div className="container">
+                <div className="filters__wrapper">
+                    <div className="filters__subgroup">
+                        <div className="filters__title">
+                            Подгруппа
                         </div>
-                        <div className="filters__choosen">
-                            <div className="filters__title">
-                                Дисциплина по выбору
-                            </div>
-                            <select name="" id="" 
-                                className="filters__choosen-wrapper"
-                                onChange={this.onChangeFilteredSubject}>
-                                <option value="null" 
-                                    className="filters__choosen-item">Выберите дисциплину по выбору</option>
-                                <ChoosenClass schedule={this.props.schedule}/>
-                            </select>
-                            
-                        </div>
-                        <div className="filters__all-table">
-                            <div className="filters__title">Показать все расписание</div>
-                            <input type="checkbox" className='filters__checkbox' onChange={this.onChangeCheckbox}/>
+                        <div className="filters__subgroup-wrapper">
+                            <button className={subgroup === 1 ? btnClassActive : btnClass} onClick={() => onChangeSubgroup(1)}>1</button>
+                            <button className={subgroup === 2 ? btnClassActive : btnClass} onClick={() => onChangeSubgroup(2)}>2</button>
                         </div>
                     </div>
+                    <div className="filters__choosen">
+                        <div className="filters__title">
+                            Дисциплина по выбору
+                        </div>
+                        <select name="" id="" 
+                            className="filters__choosen-wrapper"
+                            onChange={onChangeFilteredSubject}>
+                            <option value="null" 
+                                className="filters__choosen-item">Выберите дисциплину по выбору</option>
+                            {props.schedule.length > 1 ? <ChoosenClass schedule={props.schedule}/> : null}
+                        </select>
+                        
+                    </div>
+                    <div className="filters__all-table">
+                        <div className="filters__title">Показать все расписание</div>
+                        <input type="checkbox" className='filters__checkbox' onChange={onChangeCheckbox}/>
+                    </div>
                 </div>
-            </section>
-        );
-    }
+            </div>
+        </section>
+    );
 }
 
 const ChoosenClass = (props) => {
     const arrOfSubjects = [];
-    const subjects = props.schedule.map(item => {
+    const subjects = props.schedule[4].schedule.map(item => {
         return (
             item.data.map((itemm, i) => {
                 const {subgroup, subject} = itemm;
@@ -111,7 +92,7 @@ const ChoosenClass = (props) => {
                     }
                 }
                 if (subgroup === 'choosen'){
-                    exp = <option id={i} 
+                    exp = <option key={i} 
                         value={subject} 
                         className="filters__choosen-item">{subject}
                     </option>

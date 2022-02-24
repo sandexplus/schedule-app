@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.scss';
 
@@ -7,107 +7,93 @@ import Filters from '../filters/Filters';
 import Schedule from '../schedule/Schedule';
 import Spinner from '../spinner/Spinner';
 
-class App extends Component{
-    timeOfCourses = [
-        {
-            timeStartHours: 8,
-            timeStartMinutes: 0,
-            timeEndHours: 9,
-            timeEndMinutes: 35
-        },
-        {
-            timeStartHours: 9,
-            timeStartMinutes: 45,
-            timeEndHours: 11,
-            timeEndMinutes: 20
-        },
-        {
-            timeStartHours: 11,
-            timeStartMinutes: 30,
-            timeEndHours: 13,
-            timeEndMinutes: 5
-        },
-        {
-            timeStartHours: 13,
-            timeStartMinutes: 45,
-            timeEndHours: 15,
-            timeEndMinutes: 20
-        },
-        {
-            timeStartHours: 15,
-            timeStartMinutes: 30,
-            timeEndHours: 17,
-            timeEndMinutes: 5
-        },
-        {
-            timeStartHours: 17,
-            timeStartMinutes: 15,
-            timeEndHours: 18,
-            timeEndMinutes: 50
-        }
-    ]
+const App = () => {
+    const [subgroup, setSubgroup] = useState(null);
+    const [filteredSubject, setFilteredSubject] = useState('null');
+    const [showAllTable, setShowAllTable] = useState(true);
+    const [schedule, setSchedule] = useState([]);
+    const [links, setLinks] = useState([]);
 
-    state = {
-        subgroup: null,
-        schedule: [],
-        filteredSubject: 'null',
-        showAllTable: true,
-        loading: true
-    }
-
-    componentDidUpdate = () => {
-        localStorage.setItem('subgroup', this.state.subgroup);
-        localStorage.setItem('filteredSubject', this.state.filteredSubject);
-    }
-
-    componentDidMount = () => {
+    useEffect(() => {
         if (localStorage.getItem('subgroup')){
-            this.onChangeSubgroup(+localStorage.getItem('subgroup'))
+            onChangeSubgroup(+localStorage.getItem('subgroup'))
         }
         if (localStorage.getItem('filteredSubject')){
-            this.onChangeFilteredSubject(localStorage.getItem('filteredSubject'))
+            onChangeFilteredSubject(localStorage.getItem('filteredSubject'))
         }
-        fetch('https://schedule-omsu.herokuapp.com/data')
-            .then(res => res.json())
-            .then(data => {
-                this.setState({schedule: data, loading: false})
-            })
-    }
+        
+    }, [])
 
-    onChangeSubgroup = (subgroup) => {
-        this.setState({
-            subgroup: subgroup
-        });
-    }
-
-    onChangeFilteredSubject = (filteredSubject) => {
-        this.setState({
-            filteredSubject: filteredSubject
+    const loadData = () => {
+        fetch(`http://localhost:3000/data`)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            setSchedule(data)
         })
     }
 
-    onChangeCheckbox = () => {
-        this.setState({
-            showAllTable: !this.state.showAllTable
+    const loadLinks = () => {
+        fetch(`http://localhost:3000/links`)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            setLinks(data)
         })
     }
 
-    render (){
-        return (
-            <>
-                <Header group="СПБ-901-01" faculty="Факультет компьютерных наук"/>
-                <Filters onChangeSubgroup={this.onChangeSubgroup} 
-                    onChangeFilteredSubject={this.onChangeFilteredSubject} 
-                    schedule={this.state.schedule}
-                    onChangeCheckbox={this.onChangeCheckbox}/>
-                <Schedule subgroup={this.state.subgroup} 
-                    schedule={this.state.schedule}
-                    filteredSubject={this.state.filteredSubject}
-                    showAllTable={this.state.showAllTable}
-                    spinner={this.state.loading === true ? <Spinner/> : null}/>
-            </>
-        );
+    useEffect(() => {
+        loadData();
+        loadLinks();
+    }, [])
+
+
+    useEffect(() => {
+        localStorage.setItem('subgroup', subgroup);
+        localStorage.setItem('filteredSubject', filteredSubject);
+    }, [subgroup, filteredSubject])
+
+    const onChangeSubgroup = (subg) => {
+        setSubgroup(subg)
     }
+
+    const onChangeFilteredSubject = (filSubject) => {
+        setFilteredSubject(filSubject)
+    }
+
+    const onChangeCheckbox = () => {
+        setShowAllTable(!showAllTable)
+    }
+
+    return (
+        <>
+            {
+                schedule.length > 1 ? 
+                (
+                <>
+                    <Header schedule={schedule} faculty="Факультет компьютерных наук"/>
+                    <Filters onChangeSubgroup={onChangeSubgroup} 
+                    onChangeFilteredSubject={onChangeFilteredSubject} 
+                    schedule={schedule}
+                    onChangeCheckbox={onChangeCheckbox}/>
+                    </>
+                ):
+                null
+            }
+            {
+                links.length > 1 ?
+                <Schedule subgroup={subgroup} 
+                schedule={schedule}
+                filteredSubject={filteredSubject}
+                showAllTable={showAllTable}
+                links={links}/> :
+                <Spinner/>
+            }
+        </>
+    );
 }
+
 
 export default App;
